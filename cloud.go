@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-// A client represents a client connection to a {own|next}cloud
+// Client A client represents a client connection to a {own|next}cloud
 type Client struct {
 	Url      *url.URL
 	Username string
@@ -51,12 +51,12 @@ type ShareResult struct {
 // Dial connects to an {own|next}Cloud instance at the specified
 // address using the given credentials.
 func Dial(host, username, password string) (*Client, error) {
-	url, err := url.Parse(host)
+	remoteUrl, err := url.Parse(host)
 	if err != nil {
 		return nil, err
 	}
 	return &Client{
-		Url:      url,
+		Url:      remoteUrl,
 		Username: username,
 		Password: password,
 	}, nil
